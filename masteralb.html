@@ -3,20 +3,113 @@
   <head>
     <meta charset="utf-8">
     <title>Masteralb</title>
+    <link href="https://fonts.googleapis.com/css?family=Titillium+Web:300,400,600" rel="stylesheet">
     <link rel="stylesheet" href="masteralb.css">
   </head>
   <body>
   	<div class="wrapper">
-  		<div class="logo-top">
-  			<img src="" alt="Masteralb logo"/>
-  		</div>
-  		<form class="register"></form>
-  		<form class="email"></form>
-  		<form class="signin"></form>
-  		<form class="recover"></form>
-  		<form class="subscribe"></form>
-  		<div class="logo-bottom">
-  			<img src="" alt="Masteralb logo"/>
-  		</div>
+  		<header>
+  			<img src="images/logo_top.png" alt="Masteralb logo"/>
+  		</header>
+  		<main>
+  			<div class="column">
+  				<form class="register" method="get" action="#">
+  					<legend>Register Form</legend>
+  					<fieldset>
+  						<label for="username">
+  							<input type="text" id="username"/>
+  						</label>
+  						<label for="password">
+  							<input type="password" id="password"/>
+  						</label>
+  						<label for="confirm-password">
+  							<input type="password" id="confirm-password"/>
+  						</label>
+  						<label for="user-email">
+  							<input type="text" id="user-email"/>
+  						</label>
+  						<label for="location">
+  							<select id="location">
+  								<option>Europe</option>
+  								<option>North America</option>
+  								<option>South America</option>
+  								<option>Africa</option>
+  								<option>Asia</option>
+  								<option>Australia</option>
+  							</select>
+  						</label>
+  						<div class="confirmation_wrapper">
+  							<input type="checkbox" id="terms" name="terms" checked>
+  							<div class="thick-box"></div>
+    						<label for="terms">I have read and accept the terms of use</label>
+  						</div>
+  						<input type="submit" value="Sign up"/>
+  					</fieldset>
+  				</form>
+  				<form class="email" method="get" action="#">
+  					<legend>Send Email</legend>
+  					<fieldset>
+  						<label for="email-name">
+  							<input type="text" id="email-name"/>
+  						</label>
+  						<label for="email-adress">
+  							<input type="text" id="email-adress"/>
+  						</label>
+  						<textarea></textarea>
+  						<div class="confirmation_wrapper">
+  							<input type="checkbox" id="send-email-copy"/>
+  							<div class="thick-box"></div>
+  							<label for="send-email-copy">Send a copy to my e-mail</label>
+  						</div>
+  						<input type="submit" value="Send Email"/>
+  					</fieldset>
+  				</form>
+  			</div>
+  			<div class="column">
+  				<form class="sign-in" method="get" action="#">
+  					<legend>Sign In Form</legend>
+  					<fieldset>
+  						<label for="user-signin">
+  							<input type="text" id="user-signin"/>
+  						</label>
+  						<label for="password-signin">
+  							<input type="password" id="password-signin"/>
+  						</label>
+  						<div class="confirmation_wrapper">
+  							<input type="checkbox" id="remember-user"/>
+  							<div class="thick-box"></div>
+  							<label for="remember-user">Remember me</label>
+  						</div>
+  						<input type="submit" value="Sign in"/>
+  					</fieldset>
+  				</form>
+  				<form class="recover" method="get" action="#">
+  					<legend>Recover Form</legend>
+  					<fieldset>
+  						<label for="email-recover">
+  							<input type="text" id="email-recover"/>
+  						</label>
+  						<label for="phone-recover">
+  							<input type="text" id="phone-recover"/>
+  						</label>
+  						<input type="submit" value="Send"/>
+  						<button>Done</button>
+  					</fieldset>
+  				</form>
+  				<form class="subscribe" method="get" action="#">
+  					<legend>Subscribe Form</legend>
+  					<fieldset>
+  						<label for="email-subscribe">
+  							<input type="text" id="email-subscribe"/>
+  						</label>
+  						<input type="submit" value="Subscribe"/>
+  						<button>No,Thanks</button>
+  					</fieldset>
+  				</form>
+  				<div class="logo-bottom">
+  					<img src=images/logo_www.png alt="Masteralb logo"/>
+  				</div>
+  			</div>
+  		</main>
   	</div>
   </body>
