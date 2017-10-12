@@ -9,27 +9,27 @@
   <body>
   	<div class="wrapper">
   		<header>
-  			<img src="images/logo_top.png" alt="Masteralb logo"/>
+  			<img src="images/logo-top.png" alt="Masteralb logo"/>
   		</header>
   		<main>
   			<div class="column">
-  				<form class="register" method="get" action="#">
+  				<form class="register" method="get" action="#" data-validate>
   					<legend>Register Form</legend>
   					<fieldset>
   						<label for="username">
-  							<input type="text" id="username"/>
+  							<input type="text" id="username" placeholder="Username" data-validate-rules=""/>
   						</label>
   						<label for="password">
-  							<input type="password" id="password"/>
+  							<input type="password" id="password" placeholder="Password" data-validate-rules=""/>
   						</label>
   						<label for="confirm-password">
-  							<input type="password" id="confirm-password"/>
+  							<input type="password" id="confirm-password" placeholder="Confirm Password"/>
   						</label>
   						<label for="user-email">
-  							<input type="text" id="user-email"/>
+  							<input type="text" id="user-email" placeholder="Email" data-validate-rules=""/>
   						</label>
   						<label for="location">
-  							<select id="location">
+  							<select id="location" placeholder="Your Location">
   								<option>Europe</option>
   								<option>North America</option>
   								<option>South America</option>
@@ -39,25 +39,25 @@
   							</select>
   						</label>
   						<div class="confirmation_wrapper">
-  							<input type="checkbox" id="terms" name="terms" checked>
+  							<input type="checkbox" id="terms" name="terms" data-validate-rules="">
   							<div class="thick-box"></div>
     						<label for="terms">I have read and accept the terms of use</label>
   						</div>
   						<input type="submit" value="Sign up"/>
   					</fieldset>
   				</form>
-  				<form class="email" method="get" action="#">
+  				<form class="email" method="get" action="#" data-validate>
   					<legend>Send Email</legend>
   					<fieldset>
   						<label for="email-name">
-  							<input type="text" id="email-name"/>
+  							<input type="text" id="email-name" placeholder="Your Name" data-validate-rules=""/>
   						</label>
   						<label for="email-adress">
-  							<input type="text" id="email-adress"/>
+  							<input type="text" id="email-adress" placeholder="Your Email"/>
   						</label>
-  						<textarea></textarea>
+  						<textarea placeholder="Type your message"></textarea>
   						<div class="confirmation_wrapper">
-  							<input type="checkbox" id="send-email-copy"/>
+  							<input type="checkbox" id="send-email-copy" data-validate-rules=""/>
   							<div class="thick-box"></div>
   							<label for="send-email-copy">Send a copy to my e-mail</label>
   						</div>
@@ -66,41 +66,41 @@
   				</form>
   			</div>
   			<div class="column">
-  				<form class="sign-in" method="get" action="#">
+  				<form class="sign-in" method="get" action="#" data-validate>
   					<legend>Sign In Form</legend>
   					<fieldset>
   						<label for="user-signin">
-  							<input type="text" id="user-signin"/>
+  							<input type="text" id="user-signin" placeholder="Username" data-validate-rules=""/>
   						</label>
   						<label for="password-signin">
-  							<input type="password" id="password-signin"/>
+  							<input type="password" id="password-signin" placeholder="Password" data-validate-rules=""/>
   						</label>
   						<div class="confirmation_wrapper">
-  							<input type="checkbox" id="remember-user"/>
+  							<input type="checkbox" id="remember-user" data-validate-rules=""/>
   							<div class="thick-box"></div>
   							<label for="remember-user">Remember me</label>
   						</div>
   						<input type="submit" value="Sign in"/>
   					</fieldset>
   				</form>
-  				<form class="recover" method="get" action="#">
+  				<form class="recover" method="get" action="#" data-validate>
   					<legend>Recover Form</legend>
   					<fieldset>
   						<label for="email-recover">
-  							<input type="text" id="email-recover"/>
+  							<input type="text" id="email-recover" placeholder="Enter your Email" data-validate-rules=""/>
   						</label>
   						<label for="phone-recover">
-  							<input type="text" id="phone-recover"/>
+  							<input type="text" id="phone-recover" placeholder="Enter your Phone number" data-validate-rules=""/>
   						</label>
   						<input type="submit" value="Send"/>
   						<button>Done</button>
   					</fieldset>
   				</form>
-  				<form class="subscribe" method="get" action="#">
+  				<form class="subscribe" method="get" action="#" data-validate>
   					<legend>Subscribe Form</legend>
   					<fieldset>
   						<label for="email-subscribe">
-  							<input type="text" id="email-subscribe"/>
+  							<input type="text" id="email-subscribe" placeholder="Enter your Email" data-validate-rules=""/>
   						</label>
   						<input type="submit" value="Subscribe"/>
   						<button>No,Thanks</button>
@@ -112,4 +112,6 @@
   			</div>
   		</main>
   	</div>
+  	<script src="masteralb.js"></script>
+  	<script src="validation.js"></script>
   </body>

@@ -14,14 +14,30 @@ body {
 	text-align: center;
 }
 
+header {
+	max-width: 50%;
+	margin: 0 auto;
+}
+
 header>img,
 .logo-bottom>img {
+	max-width: 100%;
+	min-width: 75%;
+	padding: 0.5em;
 	opacity: 0.3;
 	filter: drop-shadow(2px 2px 0 rgba(255,255,255,0.5));
 }
 
+.logo-bottom {
+	margin: 4em auto 0;
+}
+
 main {
-	width: 95%;
+	max-width: 1500px;
+	margin: 0 auto;
+	display: -webkit-box;    
+	display: -ms-flexbox;  
+  	display: -webkit-flex;
 	display: flex;
 	flex-flow: row wrap;
 	align-items: flex-start;
@@ -32,12 +48,19 @@ main {
 .column {
 	width: 45%;
 	padding: 1em;
+	text-align: center;
 }
 
 form {
-	width: 90%;
+	width: 80%;
 	margin: 1.5em auto;
 }
+
+.register>legend,
+.sign-in>legend {
+	margin-top: 0;
+}
+
 
 fieldset {
 	display: -webkit-box;    
@@ -49,20 +72,27 @@ fieldset {
 	justify-content: space-between;
 	background-color: rgb(244,244,244);
 	background-clip: padding-box;
-	border: 1.3em solid rgba(0,0,0,0.3);
+	box-shadow: 0 0 0 1.3em rgba(0,0,0,0.3);
+	border: none;
 	border-radius: 0.25em;
 	padding: 1.5em;
 }
 
 legend {
+	width: 100%;
+	text-align: center;
 	display: block;
 	color: #FFFFFF;
-	font-size: 2em;
+	font-size: 2.6em;
 	text-shadow: 2px 2px 0 #000000;
-	margin: 0.5em;
+	margin: 1.5em auto 1em;
 }
 
-fieldset>label {
+fieldset>label,
+textarea {
+	display: -webkit-box;    
+	display: -ms-flexbox;  
+  	display: -webkit-flex;
 	display: flex;
 	justify-content: flex-end;
 	align-items: center;
@@ -75,48 +105,51 @@ fieldset>label {
 	padding: 0.1em;
 }
 
-input[type="text"],
-input[type="password"],
-select {
-	width: 83%;
-	border: none;
-	border-left: 2px solid rgb(222,222,222);
-	background-color: transparent;
-	font-size: 1.4em;
-	float: right;
-	padding: 0 0.5em;
-}
-
 label[for="username"],
 label[for="email-name"],
 label[for="user-signin"] {
-	background: url(images/icons.png) no-repeat 2% 0% transparent;
-	background-size: 8%;
+	background: url(images/user.png) no-repeat 3% center transparent;
 }
 
 label[for="password"],
 label[for="confirm-password"],
 label[for="password-signin"] {
-	background: url(images/icons.png) no-repeat 2% 26% transparent;
-	background-size: 8%;
+	background: url(images/password.png) no-repeat 3% center transparent;
 }
 
 label[for="user-email"],
 label[for="email-adress"],
 label[for="email-recover"],
 label[for="email-subscribe"] {
-	background: url(images/icons.png) no-repeat 2% 49% transparent;
-	background-size: 8%;
+	background: url(images/mail.png) no-repeat 3% center transparent;
 }
 
 label[for="location"] {
-	background: url(images/icons.png) no-repeat 2% 73% transparent;
-	background-size: 8%;
+	background: url(images/location.png) no-repeat 3% center transparent;
 }
 
 label[for="phone-recover"] {
-	background: url(images/icons.png) no-repeat 2% 98% transparent;
-	background-size: 8%;
+	background: url(images/phone.png) no-repeat 3% center transparent;
+}
+
+input,
+select {
+	color: rgb(180,180,180);
+	text-shadow: 1px 1px 0 rgb(222,222,222);
+}
+
+input[type="text"],
+input[type="password"],
+select {
+	width: 88%;
+	border: none;
+	border-left: 2px solid rgb(222,222,222);
+	background-color: transparent;
+	font-size: 1.4em;
+	float: right;
+	box-sizing: border-box;
+	padding: 0 0.5em;
+	outline: none;
 }
 
 textarea {
@@ -124,7 +157,14 @@ textarea {
 	height: 18em;
 	border: 2px solid rgb(222,222,222);
 	border-radius: 0.25em;
-	font-size: 1.4em;
+	font-size: 1em;
+	font-family: 'Titillium Web', sans-serif;
+	color: rgb(180,180,180);
+	text-shadow: 1px 1px 0 rgb(222,222,222);
+	outline: none;
+	resize: none;
+	overflow: auto;
+	padding: 0.5em;
 }
 
 .register input[type="submit"],
@@ -143,6 +183,7 @@ textarea {
 	color: #FFFFFF;
 	font-size: 2em;
 	text-shadow: 2px 2px 0 #000000;
+	margin-top: 0.5em;
 }
 
 .sign-in input[type="submit"],
@@ -158,6 +199,16 @@ textarea {
 	background: linear-gradient(rgb(245,92,108),rgb(241,57,73));
 	border: 2px solid rgb(247,111,127);
 	border-radius: 0.25em;
+}
+
+.register input[type="submit"]:hover,
+.email input[type="submit"]:hover,
+.sign-in input[type="submit"]:hover,
+.recover input[type="submit"]:hover,
+.subscribe input[type="submit"]:hover,
+.recover button:hover,
+.subscribe button:hover {
+	box-shadow: 0 0 2px 4px rgb(210,210,210);
 }
 
 .confirmation_wrapper {
@@ -186,7 +237,43 @@ input[type="checkbox"] {
 	background: linear-gradient(rgb(241,241,241),rgb(247,247,247));
 }
 
+.thick-box:after {
+	content: '';
+	width:0.6em;
+	height:0.6em;
+	position: absolute;
+	top: calc(50% - 0.3em);
+	left: calc(50% - 0.3em);
+	background: linear-gradient(rgb(163,216,64),rgb(126,195,31));
+	border-radius: 0.1em;
+	opacity: 0;
+	transition: all 0.5s;
+}
+
+.thick-box:hover:after {
+	opacity: 1;
+}
+
+label[for="terms"],
+label[for="send-email-copy"],
+label[for="remember-user"] {
+	margin-left: 1em;
+}
+
 select {
 	-moz-appearance: none;
 	-webkit-appearance: none;
+}
+
+.error-field {
+	border: 2px solid #FF0000;
+}
+
+.error-info {
+	font-size: 1em;
+	color: #FF0000;
+}
+
+.focus {
+	border: 2px solid #382D6D;
 }
