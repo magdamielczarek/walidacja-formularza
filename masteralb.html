@@ -4,10 +4,20 @@
     <meta charset="utf-8">
     <title>Masteralb</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="msapplication-TileColor" content="#ffffff">
+	<meta name="msapplication-TileImage" content="ms-icon-144x144.png">
+	<meta name="theme-color" content="#ffffff">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="96x96" href="favicon-96x96.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
     <link href="https://fonts.googleapis.com/css?family=Titillium+Web:300,400,600" rel="stylesheet">
     <link rel="stylesheet" href="masteralb.css">
   </head>
   <body>
+  	<noscript> 
+  		<p style="color:red;"><b>Proszę zezwolić na obsługę JavaScript.</b>
+		<a href="www.kropleinternetu.biz/kontakt.php" title="Włączenie obsługi JavaScript w przeglądarkach internetowych" target="_blank"><b> Kliknij i sprawdź jak to zrobić  »</b></a></p> 
+	</noscript>
   	<div class="wrapper">
   		<header>
   			<img src="images/logo-top.png" alt="Masteralb logo"/>
@@ -15,97 +25,107 @@
   		<main>
   			<div class="column">
   				<form class="register" method="get" action="#" data-validate>
-  					<legend>Register Form</legend>
-  					<fieldset>
-  						<label for="username">
-  							<input type="text" id="username" placeholder="Username" data-validate-rules=""/>
-  						</label>
-  						<label for="password">
-  							<input type="password" id="password" placeholder="Password" data-validate-rules=""/>
-  						</label>
-  						<label for="confirm-password">
-  							<input type="password" id="confirm-password" placeholder="Confirm Password"/>
-  						</label>
-  						<label for="user-email">
-  							<input type="text" id="user-email" placeholder="Email" data-validate-rules=""/>
-  						</label>
-  						<label for="location">
-  							<select id="location" placeholder="Your Location">
-  								<option>Europe</option>
-  								<option>North America</option>
-  								<option>South America</option>
-  								<option>Africa</option>
-  								<option>Asia</option>
-  								<option>Australia</option>
-  							</select>
-  						</label>
-  						<div class="confirmation_wrapper">
-  							<input type="checkbox" id="terms" name="terms" data-validate-rules="">
-  							<div class="thick-box"></div>
-    						<label for="terms">I have read and accept the terms of use</label>
-  						</div>
-  						<input type="submit" value="Sign up"/>
-  					</fieldset>
+  					<h2>Register Form</h2>
+  					<div class="fieldset-border">
+  						<fieldset>
+  							<label for="username">
+  								<input type="text" id="username" placeholder="Username" data-validate-rules="reset_validation,required,max_length_15,no_special_char"/>
+  							</label>
+  							<label for="password">
+  								<input type="password" id="password" placeholder="Password" data-validate-rules="reset_validation,required,minimum_length_5,no_special_char,contain_number"/>
+  							</label>
+  							<label for="confirm-password">
+  								<input type="password" id="confirm-password" placeholder="Confirm Password" data-validate-rules="reset_validation,required,same_password"/>
+  							</label>
+  							<label for="user-email">
+  								<input type="text" id="user-email" placeholder="Email" data-validate-rules="reset_validation,required,email_pattern"/>
+  							</label>
+  							<label for="location">
+  								<select id="location" placeholder="Your Location" data-validate-rules="reset_validation,checked">
+  									<option>Europe</option>
+  									<option>North America</option>
+  									<option>South America</option>
+  									<option>Africa</option>
+  									<option>Asia</option>
+  									<option>Australia</option>
+  								</select>
+  							</label>
+  							<div class="confirmation_wrapper">
+  								<input type="checkbox" id="terms" name="terms" data-validate-rules="reset_validation,checked">
+  								<div class="thick-box"></div>
+    							<label for="terms">I have read and accept the terms of use</label>
+  							</div>
+  							<input type="submit" value="Sign up"/>
+  						</fieldset>
+  					</div>
   				</form>
   				<form class="email" method="get" action="#" data-validate>
-  					<legend>Send Email</legend>
-  					<fieldset>
-  						<label for="email-name">
-  							<input type="text" id="email-name" placeholder="Your Name" data-validate-rules=""/>
-  						</label>
-  						<label for="email-adress">
-  							<input type="text" id="email-adress" placeholder="Your Email"/>
-  						</label>
-  						<textarea placeholder="Type your message"></textarea>
-  						<div class="confirmation_wrapper">
-  							<input type="checkbox" id="send-email-copy" data-validate-rules=""/>
-  							<div class="thick-box"></div>
-  							<label for="send-email-copy">Send a copy to my e-mail</label>
-  						</div>
-  						<input type="submit" value="Send Email"/>
-  					</fieldset>
+  					<h2>Send Email</h2>
+  					<div class="fieldset-border">
+  						<fieldset>
+  							<label for="email-name">
+  								<input type="text" id="email-name" placeholder="Your Name" data-validate-rules="reset_validation,required,no_special_char, max_length_30"/>
+  							</label>
+  							<label for="email-adress">
+  								<input type="text" id="email-adress" placeholder="Your Email" data-validate-rules="reset_validation,required,email_pattern"/>
+  							</label>
+  							<textarea placeholder="Type your message"></textarea>
+  							<div class="confirmation_wrapper">
+  								<input type="checkbox" id="send-email-copy" />
+  								<div class="thick-box"></div>
+  								<label for="send-email-copy">Send a copy to my e-mail</label>
+  							</div>
+  							<input type="submit" value="Send Email"/>
+  						</fieldset>
+  					</div>
   				</form>
   			</div>
   			<div class="column">
   				<form class="sign-in" method="get" action="#" data-validate>
-  					<legend>Sign In Form</legend>
-  					<fieldset>
-  						<label for="user-signin">
-  							<input type="text" id="user-signin" placeholder="Username" data-validate-rules=""/>
-  						</label>
-  						<label for="password-signin">
-  							<input type="password" id="password-signin" placeholder="Password" data-validate-rules=""/>
-  						</label>
-  						<div class="confirmation_wrapper">
-  							<input type="checkbox" id="remember-user" data-validate-rules=""/>
-  							<div class="thick-box"></div>
-  							<label for="remember-user">Remember me</label>
-  						</div>
-  						<input type="submit" value="Sign in"/>
-  					</fieldset>
+  					<h2>Sign In Form</h2>
+  					<div class="fieldset-border">
+  						<fieldset>
+  							<label for="user-signin">
+  								<input type="text" id="user-signin" placeholder="Username" />
+  							</label>
+  							<label for="password-signin">
+  								<input type="password" id="password-signin" placeholder="Password" />
+  							</label>
+  							<div class="confirmation_wrapper">
+  								<input type="checkbox" id="remember-user" />
+  								<div class="thick-box"></div>
+  								<label for="remember-user">Remember me</label>
+  							</div>
+  							<input type="submit" value="Sign in"/>
+  						</fieldset>
+  					</div>
   				</form>
   				<form class="recover" method="get" action="#" data-validate>
-  					<legend>Recover Form</legend>
-  					<fieldset>
-  						<label for="email-recover">
-  							<input type="text" id="email-recover" placeholder="Enter your Email" data-validate-rules=""/>
-  						</label>
-  						<label for="phone-recover">
-  							<input type="text" id="phone-recover" placeholder="Enter your Phone number" data-validate-rules=""/>
-  						</label>
-  						<input type="submit" value="Send"/>
-  						<button>Done</button>
-  					</fieldset>
+  					<h2>Recover Form</h2>
+  					<div class="fieldset-border">
+  						<fieldset>
+  							<label for="email-recover">
+  								<input type="text" id="email-recover" placeholder="Enter your Email" />
+  							</label>
+  							<label for="phone-recover">
+  								<input type="text" id="phone-recover" placeholder="Enter your Phone number" />
+  							</label>
+  							<input type="submit" value="Send"/>
+  							<button>Done</button>
+  						</fieldset>
+  					</div>
   				</form>
   				<form class="subscribe" method="get" action="#" data-validate>
-  					<legend>Subscribe Form</legend>
-  					<fieldset>
-  						<label for="email-subscribe">
-  							<input type="text" id="email-subscribe" placeholder="Enter your Email" data-validate-rules=""/>
-  						</label>
-  						<input type="submit" value="Subscribe"/>
-  						<button>No,Thanks</button>
-  					</fieldset>
+  					<h2>Subscribe Form</h2>
+  					<div class="fieldset-border">
+  						<fieldset>
+  							<label for="email-subscribe">
+  								<input type="text" id="email-subscribe" placeholder="Enter your Email" data-validate-rules="reset_validation,required,email_pattern" />
+  							</label>
+  							<input type="submit" value="Subscribe"/>
+  							<button>No,Thanks</button>
+  						</fieldset>
+  					</div>
   				</form>
   				<div class="logo-bottom">
   					<img src=images/logo_www.png alt="Masteralb logo"/>

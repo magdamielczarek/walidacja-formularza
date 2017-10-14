@@ -1,78 +1,130 @@
+const forms = document.querySelectorAll("form[data-validate]");
+const validated_inputs = document.querySelectorAll("form[data-validate] input[data-validate-rules]");
 
 	const validate_type = {
+		reset_validation: function(element){
+			element.parentElement.classList.remove("error-field");
+			element.parentElement.classList.remove("error-checkbox");
+			//document.querySelectorAll(".validation_info").forEach(function(element){element.innerHTML=""});
+		},
 		required: function(element){
-			const validate_info = element.previousElementSibling;
-			validate_info.innerHTML="";
+			const validate_info = element.parentNode.nextElementSibling;
+			validate_info.innerText="";
 			if(/^\s*$/.test(element.value)==true){
-				validate_info.insertAdjacentHTML("afterbegin","<p>This field is required</p>");
-				element.style.borderBottom = "3px solid red";
+				validate_info.insertAdjacentHTML("beforeend","<p class='validation_details'>This field is required</p>");
+				element.parentElement.classList.add("error-field");
 			} else {
-				element.style.borderBottom = "1px solid #DADBDB";
+				if(element.parentElement.classList=="error-field"){
+					return;
+				}
 			} 
 		},
-		account_pattern: function(element){
-			const validate_info = element.previousElementSibling;
-			if(element.value.search(/^[0-9]{26,26}$/)==-1){
-				validate_info.insertAdjacentHTML("afterbegin","<p>Number must contain 26 digits</p>");
-				element.style.borderBottom = "3px solid red";
+		minimum_length_5: function(element){
+			const validate_info = element.parentNode.nextElementSibling;
+			if(element.value.length<5){
+				validate_info.insertAdjacentHTML("beforeend","<p class='validation_details'>This field must not contain less than 5 signs</p>");
+				element.parentElement.classList.add("error-field");
 			} else {
-				element.style.borderBottom = "1px solid #DADBDB";
+				if(element.parentElement.classList=="error-field"){
+					return;
+				}
 			} 
 		},
-		amount_pattern: function(element){
-			const validate_info = element.previousElementSibling;
-			if(element.value.search(/^\d{0,10}(\,\d{1,2})?$/)==-1||element.value==0){
-				validate_info.insertAdjacentHTML("afterbegin","<p>Sum must contain only digits and comma</p>");
-				element.style.borderBottom = "3px solid red";
+		max_length_15: function(element){
+			const validate_info = element.parentNode.nextElementSibling;
+			if(element.value.length>15){
+				validate_info.insertAdjacentHTML("beforeend","<p class='validation_details'>This field must not contain more than 15 signs</p>");
+				element.parentElement.classList.add("error-field");
 			} else {
-				element.style.borderBottom = "1px solid #DADBDB";
+				if(element.parentElement.classList=="error-field"){
+					return;
+				}
+			} 
+		},
+		max_length_30: function(element){
+			const validate_info = element.parentNode.nextElementSibling;
+			if(element.value.length>30){
+				validate_info.insertAdjacentHTML("beforeend","<p class='validation_details'>This field must not contain more than 30 signs</p>");
+				element.parentElement.classList.add("error-field");
+			} else {
+				if(element.parentElement.classList=="error-field"){
+					return;
+				}
+			} 
+		},
+		email_pattern: function(element){
+			const validate_info = element.parentNode.nextElementSibling;
+			if(element.value!=""&&element.value.search(/^[a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,4}$/)==-1||element.value==0){
+				validate_info.insertAdjacentHTML("beforeend","<p class='validation_details'>Invalid email pattern</p>");
+				element.parentElement.classList.add("error-field");
+			} else {
+				if(element.parentElement.classList=="error-field"){
+					return;
+				}
+			} 
+		},
+		contain_number: function(element){
+			const validate_info = element.parentNode.nextElementSibling;
+			if(element.value.search( /\d{1}/)==-1){
+				validate_info.insertAdjacentHTML("beforeend","<p class='validation_details'>Password must contain at least one digit</p>");
+				element.parentElement.classList.add("error-field");
+			} else {
+				if(element.parentElement.classList=="error-field"){
+					return;
+				}
 			} 
 		},
 		no_special_char: function(element){
-			const validate_info = element.previousElementSibling;
-			if(/[\-\[\]\/\\\{\}\(\)\*\+\?\.\^\$\|]/.test(element.value)==true){
-				validate_info.insertAdjacentHTML("afterbegin","<p>This field should not contain any special characters or symbols</p>");
-				element.style.borderBottom = "3px solid red";
+			const validate_info = element.parentNode.nextElementSibling;
+			if(/[\-\[\]\/\\,\\\{\}\(\)\*\+\?\.\^\$\|]/.test(element.value)==true){
+				validate_info.insertAdjacentHTML("beforeend","<p class='validation_details'>This field should not contain any special characters or symbols</p>");
+				element.parentElement.classList.add("error-field");
 			} else {
-				element.style.borderBottom = "1px solid #DADBDB";
+				if(element.parentElement.classList=="error-field"){
+					return;
+				}
 			} 
 		},
-		future_date_only: function(element){
-			const validate_info = element.previousElementSibling;
-			if(Date.parse(element.value)<=(Date.now()-1000*60*60*24)){
-				validate_info.insertAdjacentHTML("afterbegin","<p>Date should not be older than current date</p>");
-				element.style.borderBottom = "3px solid red";
+		same_password: function(element){
+			const validate_info = element.parentNode.nextElementSibling;
+			if(element.value!==document.getElementById('password').value){
+				validate_info.insertAdjacentHTML("beforeend","<p class='validation_details'>This is not your password</p>");
+				element.parentElement.classList.add("error-field");
 			} else {
-				element.style.borderBottom = "1px solid #DADBDB";
-			} 
+				if(element.parentElement.classList=="error-field"){
+					return;
+				}
+			}
 		},
-		date_future_boundry: function(element){
-			const validate_info = element.previousElementSibling;
-			if(Date.parse(element.value)>(Date.now()+1000*60*60*24*365)){
-				validate_info.insertAdjacentHTML("afterbegin","<p>Not later than one year after current date</p>");
-				element.style.borderBottom = "3px solid red";
+		checked: function(element){
+			const validate_info = element.parentNode.nextElementSibling;
+			validate_info.innerText="";
+			if(element.getAttribute("checked")!=="checked"){
+				validate_info.insertAdjacentHTML("beforeend","<p class='validation_details'>You have to accept the terms of use</p>");
+				element.parentElement.classList.add("error-checkbox");
 			} else {
-				element.style.borderBottom = "1px solid #DADBDB";
-			} 
+				return;
+			}
 		},
-		max_length: function(element){
-			const validate_info = element.previousElementSibling;
-			if(element.value.length>40){
-				validate_info.insertAdjacentHTML("afterbegin","<p>This field should not contain more than 40 characters</p>");
-				element.style.borderBottom = "3px solid red";
+		selected: function(element){
+			const validate_info = element.parentNode.nextElementSibling;
+			if(element.getAttribute.checked=="checked"){
+				validate_info.insertAdjacentHTML("beforeend","<p class='validation_details'>This field should not contain more than 40 characters</p>");
+				element.parentElement.classList.add("error-field");
 			} else {
-				element.style.borderBottom = "1px solid #DADBDB";
+				if(element.parentElement.classList=="error-field"){
+					return;
+				}
 			}
 		}
 	};
 
-// validation on blur for each input (with data validate rules)
-const validated_inputs = document.querySelectorAll("form[data-validate] input[data-validate-rules]");
+validated_inputs.forEach(function(element){element.parentNode.insertAdjacentHTML("afterend","<div class='validation_info'></div>")});
 
-validated_inputs.forEach(function(element){element.insertAdjacentHTML('beforebegin','<div class="validation_info"></div>')});
+// validation on change for each input (with data validate rules)
 
 for(let i=0;i<validated_inputs.length;i++){
-	validated_inputs[i].addEventListener("blur", function(){
+	validated_inputs[i].addEventListener("change", function(){
 		const attributes = validated_inputs[i].getAttribute("data-validate-rules").split(",");
 		for(let index=0;index<attributes.length;index++){
 			if(typeof validate_type[attributes[index]]==="function"){
@@ -83,8 +135,6 @@ for(let i=0;i<validated_inputs.length;i++){
 };
 
 // validation on submit
-
-const forms = document.querySelectorAll("form[data-validate]");
 
 forms.forEach(function(element){
 	const inputs_to_final_validation = element.querySelectorAll("input[data-validate-rules]");
