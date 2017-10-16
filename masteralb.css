@@ -161,6 +161,10 @@
 	select {
 		color: rgb(180,180,180);
 		text-shadow: 1px 1px 0 rgb(222,222,222);
+		-moz-appearance: none;
+		-webkit-appearance: none;
+		appearance: none;
+		background: url("images/drop-down.png") 98% center no-repeat;
 	}
 
 	label[for="message"] {
@@ -329,12 +333,6 @@
 	label[for="send-email-copy"],
 	label[for="remember-user"] {
 		margin-left: 1em;
-	}
-
-	select {
-		-moz-appearance: none;
-		-webkit-appearance: none;
-		appearance: none;
 	}
 
 	.error-field {
